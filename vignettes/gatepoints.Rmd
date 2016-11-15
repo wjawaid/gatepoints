@@ -1,0 +1,52 @@
+---
+title: "Select points by drawing a freehand gate"
+author: "Wajid Jawaid"
+email: "wj241@cam.ac.uk"
+date: "14 November 2016"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Select points by drawing a freehand gate}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+**gatePoints** provides an easy to use function, **fhs** (freehand select) for gating or selecting points freehand on a plot. Take the simple plot below:  
+
+```{r, fig.show = 'hold', fig.cap = 'Simple plot.', fig.width = 6, fig.height = 6, dev = "svg"}
+x <- data.frame(x=1:10, y=1:10, row.names = 1:10)
+plot(x, pch = 16, col = "red")
+```
+
+```{r, echo=TRUE, eval = FALSE}
+plot(x, pch = 16, col = "red")
+selectedPoints <- fhs(x, mark = TRUE)
+```
+
+To select an arbitrarily complex region run the above commands and proceed as follows:
+
+1. Mark region of your choice by **left clicking** around your region of interest.
+2. **Close polygon by right clicking**  
+
+```{r, echo = FALSE, eval = TRUE}
+selectedPoints <- c("4", "5", "7")
+```
+
+```{r, echo=FALSE, eval = TRUE, fig.show = 'hold', fig.cap = 'Selected points', fig.width = 6, fig.height = 6, dev = "svg"}
+plot(x, pch = 16, col = "red")
+x <- rbind(c(6.099191, 8.274120), 
+           c(8.129107, 7.048649),
+           c(8.526881, 5.859404),
+           c(5.700760, 6.716428),
+           c(5.605314, 5.953430),
+           c(6.866882, 3.764390),
+           c(3.313575, 3.344069),
+           c(2.417270, 5.217868))
+polygon(x[,1], x[,2])
+points(c(4,5,7), c(4,5,7))
+```  
+
+The names of the points as given by the rownames of the data frame **x** will be returned in **selectedPoints** and the points marked as defined by the user.  
+
+```{r, echo = TRUE, eval = TRUE}
+selectedPoints
+```
