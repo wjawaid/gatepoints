@@ -14,7 +14,7 @@ x <- data.frame(x=1:10, y=1:10, row.names = 1:10)
 plot(x, pch = 16, col = "red")
 ```
 
-![Simple plot.](README-unnamed-chunk-2-1.svg)
+![Simple plot.](README-unnamed-chunk-2-1.png)
 
 ``` {.r}
 plot(x, pch = 16, col = "red")
@@ -26,7 +26,7 @@ To select an arbitrarily complex region run the above commands and proceed as fo
 1.  Mark region of your choice by **left clicking** around your region of interest.
 2.  **Close polygon by right clicking**
 
-![Selected points](README-unnamed-chunk-5-1.svg)
+![Selected points](README-unnamed-chunk-5-1.png)
 
 The names of the points as given by the rownames of the data frame **x** will be returned in **selectedPoints** and the points marked as defined by the user.
 

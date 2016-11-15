@@ -1,5 +1,5 @@
 Package: gatepoints
-Title: Easily select/gate points on a scatter plot.
+Title: Easily select/gate points on a scatter plot
 Version: 0.0.0.9000
 Authors@R: person("Wajid", "Jawaid", email = "wj241@cam.ac.uk", role = c("aut", "cre"))
 Description: Allows user to choose/gate a region on the plot and returns points
