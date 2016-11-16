@@ -1,12 +1,12 @@
 Package: gatepoints
-Title: Easily select/gate points on a scatter plot
-Version: 0.0.0.9000
+Title: Easily Gate or Select Points on a Scatter Plot
+Version: 0.0.0.1
 Authors@R: person("Wajid", "Jawaid", email = "wj241@cam.ac.uk", role = c("aut", "cre"))
 Description: Allows user to choose/gate a region on the plot and returns points
     within it.
 Depends:
     R (>= 3.3.1)
-License: GPL-2
+License: GPL (>=2)
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 5.0.1
@@ -14,3 +14,4 @@ Suggests: testthat,
     knitr,
     rmarkdown
 VignetteBuilder: knitr
+URL: https://github.com/wjawaid/gatepoints
