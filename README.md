@@ -7,7 +7,7 @@ Wajid Jawaid
 
 
 
-**gatePoints** provides an easy to use function, **fhs** (freehand select) for gating or selecting points freehand on a plot. Take the simple plot below:
+**gatepoints** provides an easy to use function, **fhs** (freehand select) for gating or selecting points freehand on a plot. Take the simple plot below:
 
 ``` {.r}
 x <- data.frame(x=1:10, y=1:10, row.names = 1:10)
@@ -28,7 +28,7 @@ To select an arbitrarily complex region run the above commands and proceed as fo
 
 ![Selected points](README-unnamed-chunk-5-1.png)
 
-The names of the points as given by the rownames of the data frame **x** will be returned in **selectedPoints** and the points marked as defined by the user.
+The names of the points as given by the rownames of the data frame **x** will be returned in **selectedPoints**. Additionally the points can be marked as defined by the user with additional parameters passed to the **points** function.
 
 ``` {.r}
 selectedPoints
