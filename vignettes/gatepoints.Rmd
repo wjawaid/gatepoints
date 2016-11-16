@@ -19,6 +19,7 @@ plot(x, pch = 16, col = "red")
 
 ```{r, echo=TRUE, eval = FALSE}
 plot(x, pch = 16, col = "red")
+library(gatepoints)
 selectedPoints <- fhs(x, mark = TRUE)
 ```
 
