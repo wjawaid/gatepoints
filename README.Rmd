@@ -2,7 +2,7 @@
 title: "Select points by drawing a freehand gate"
 author: "Wajid Jawaid"
 email: "wj241@cam.ac.uk"
-date: "14 November 2016"
+date: "`r Sys.Date()`"
 output: github_document
 ---
 
@@ -15,6 +15,26 @@ knitr::opts_chunk$set(
   fig.path = "README-"
 )
 ```
+# Installation
+
+**gatepoints** can be installed from Github or through CRAN (Not yet on CRAN).
+
+## Github
+
+```{r, echo = TRUE, eval = FALSE}
+library(devtools)
+install_github("wjawaid/gatepoints")
+```
+
+## CRAN
+
+Once available on CRAN, the package can be downloaded using
+
+```{r echo = TRUE, eval = FALSE}
+install.packages("gatepoints")
+```
+
+# Usage example
 
 **gatepoints** provides an easy to use function, **fhs** (freehand select) for gating or selecting points freehand on a plot. Take the simple plot below:  
 
@@ -24,7 +44,6 @@ plot(x, pch = 16, col = "red")
 ```
 
 ```{r, echo=TRUE, eval = FALSE}
-plot(x, pch = 16, col = "red")
 library(gatepoints)
 selectedPoints <- fhs(x, mark = TRUE)
 ```
@@ -32,7 +51,7 @@ selectedPoints <- fhs(x, mark = TRUE)
 To select an arbitrarily complex region run the above commands and proceed as follows:
 
 1. Mark region of your choice by **left clicking** around your region of interest.
-2. **Close polygon by right clicking**  
+2. Close polygon by **right clicking**. On the Windows platform click **stop** after right clicking.  
 
 ```{r, echo = FALSE, eval = TRUE}
 selectedPoints <- c("4", "5", "7")
@@ -50,9 +69,15 @@ x <- rbind(c(6.099191, 8.274120),
            c(2.417270, 5.217868))
 polygon(x[,1], x[,2])
 points(c(4,5,7), c(4,5,7))
-```  
+```
 
-The names of the points as given by the rownames of the data frame **x** will be returned in **selectedPoints**. Additionally the points can be marked as defined by the user with additional parameters passed to the **points** function.  
+```{r, echo = FALSE, eval = TRUE}
+x <- as.data.frame(x)
+colnames(x) <- c("x", "y")
+attr(selectedPoints, "gate") <- x
+```
+
+The points can be marked as defined by the user with additional parameters passed to the **points** function. The names of the points as given by the rownames of the data frame **x** will be returned in **selectedPoints**. Additionally the points selected for the gate will be returned as the **gate** attribute.
 
 ```{r, echo = TRUE, eval = TRUE}
 selectedPoints
