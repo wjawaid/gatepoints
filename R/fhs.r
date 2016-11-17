@@ -39,7 +39,7 @@ fhs <- function(data, mark = TRUE, ...) {
     data <- data[xPass & yPass,]
     inROI <- character()
     for (i in 1:nrow(data)) {
-        if (inRegion(data[i,], sel)) {
+        if (inRegion(as.numeric(data[i,]), sel)) {
             inROI <- c(inROI, rownames(data)[i])
         }
     }
