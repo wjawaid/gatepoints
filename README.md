@@ -1,7 +1,7 @@
 Select points by drawing a freehand gate
 ================
 Wajid Jawaid
-2016-11-17
+2016-11-18
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
@@ -38,7 +38,7 @@ x <- data.frame(x=1:10, y=1:10, row.names = 1:10)
 plot(x, pch = 16, col = "red")
 ```
 
-![Simple plot.](README-unnamed-chunk-4-1.png)
+![Simple plot.](README-simpleplot-1.png)
 
 ``` {.r}
 library(gatepoints)
@@ -50,7 +50,7 @@ To select an arbitrarily complex region run the above commands and proceed as fo
 1.  Mark region of your choice by **left clicking** around your region of interest.
 2.  Close polygon by **right clicking**. On the Windows platform click **stop** after right clicking.
 
-![Selected points](README-unnamed-chunk-7-1.png)
+![Selected points](README-gatedplot-1.png)
 
 The points can be marked as defined by the user with additional parameters passed to the **points** function. The names of the points as given by the rownames of the data frame **x** will be returned in **selectedPoints**. Additionally the points selected for the gate will be returned as the **gate** attribute.
 
