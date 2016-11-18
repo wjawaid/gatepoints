@@ -9,7 +9,7 @@ Wajid Jawaid
 Installation
 ============
 
-**gatepoints** can be installed from Github or through CRAN (Not yet on CRAN).
+**gatepoints** can be installed from Github or through CRAN.
 
 Github
 ------
