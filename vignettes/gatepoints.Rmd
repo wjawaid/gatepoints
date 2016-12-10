@@ -10,10 +10,11 @@ vignette: >
   %\VignetteEncoding{UTF-8}
 ---
 
-**gatepoints** provides an easy to use function, **fhs** (freehand select) for gating or selecting points freehand on a plot. Take the simple plot below:  
+**gatepoints** provides an easy to use function, **fhs** (freehand select) for gating or selecting points freehand on a plot. If using from RStudio please use X11 display for a better user experience. Take the simple plot below:  
 
 ```{r simpleplot, fig.show = 'hold', fig.cap = 'Simple plot.', fig.width = 6, fig.height = 6, dev = "svg"}
 x <- data.frame(x=1:10, y=1:10, row.names = 1:10)
+## If you are using RStudio do X11() first.
 plot(x, pch = 16, col = "red")
 ```
 

@@ -28,51 +28,52 @@ fhs <- function(data, mark = TRUE, ...) {
     cat("Mark region on plot.\n")
     if (!(is.data.frame(data) || is.matrix(data))) stop("data must be a data frame or matrix")
     if (is.null(rownames(data))) rownames(data) <- 1:nrow(data)
-    sel <- locator(type = "l")
-    numPoints <- length(sel$x)
-    lines(x = sel$x[c(1, numPoints)], y = sel$y[c(1, numPoints)])
-    sel <- as.data.frame(sel)
+    sel <- selectGate()
     xr <- range(sel$x)
     yr <- range(sel$y)
     xPass <- (data[,1] > xr[1]) & (data[,1] < xr[2])
     yPass <- (data[,2] > yr[1]) & (data[,2] < yr[2])
-    data <- data[xPass & yPass,]
-    inROI <- character()
-    for (i in 1:nrow(data)) {
-        if (inRegion(as.numeric(data[i,]), sel)) {
-            inROI <- c(inROI, rownames(data)[i])
-        }
-    }
-    if (mark) points(data[inROI,1:2], ...)
+    inROI <- applyGate(data[xPass & yPass,,drop=FALSE], sel)
+    if (mark) points(data[xPass & yPass,,drop=FALSE][inROI,1:2,drop=FALSE], ...)
     attr(inROI, "gate") <- sel
+    cp <- rep("FALSE", nrow(data))
+    cp[xPass & yPass][inROI] <- TRUE
     return(inROI)
 }
 
-##' Subfunction
-##'
-##' Subfunction
-##' @title Subfunction for \link{fhs}
-##' @param data Vector of (x,y)
-##' @param v Data frame of ordered vertices with (x,y) co-ordinates in rows
-##' @return Returns logical of whether point is in polygon
-##' @author Wajid Jawaid
-inRegion <- function(data, v) {
-    voi <- data[2] >= v[,2]
-    ind <- which(as.logical(abs(diff(c(voi, voi[1])))))
-    mod <- nrow(v)                # Modulo system for cycling
-    ind0 <- ind - 1
-    voi[(c(ind0, ind0+1) %% mod) + 1] <- TRUE
-    v <- v[voi,]                        # Only keep edges with at least 1 vertex below poi
-    v$b <- data[1] >= v[,1]             # Check poi is inbetween x vals
-    v$i <- abs(diff(c(v$b, v$b[1])))
-    for (i in which(v$i == 1)) {        # Check poi is above edge at x
-        i1 <- i
-        i2 <- (i %% nrow(v)) + 1
-        if (!all(v[c(i1, i2),2] < data[2])) {
-            lsm <- solve(cbind(v[c(i1, i2),1], 1)) %*% matrix(v[c(i1, i2),2], ncol =1)
-            lsm <- matrix(c(data[1], 1), 1) %*% lsm
-            if (data[2] < lsm) v$i[i1] <- 0
+selectGate <- function() {
+    sel <- locator(type = "l")
+    if (length(sel$x) < 3) stop("Please select at least 3 points to define a shape.")
+    numPoints <- length(sel$x)
+    lines(x = sel$x[c(1, numPoints)], y = sel$y[c(1, numPoints)])
+    sel <- as.data.frame(sel)
+    return(sel)
+}
+
+applyGate <- function(data, v) {
+    np <- nrow(data)
+    nl <- nrow(v)
+    gv <- c(v[,1], v[1,1])
+    ip <- blw <- blw1 <- blw2 <- chk <- inGate <- vector("logical", np)
+    for (i in 1:np) {
+        ip <- as.logical(abs(diff(data[i,1] <= gv)))
+        blw1 <- data[i,2] >= v[,2]
+        blw2 <- data[i,2] >= c(v[-1,2], v[1,2])
+        blw <- blw1 & blw2
+        chk <- xor(blw1, blw2)
+        for (j in (1:length(chk))[chk]) {
+            k = (j %% nl) + 1
+            ## x1 = v[j, 1]; x2 = v[k, 1]; y1 = v[j, 2]; y2 = v[k,2]
+            if ( v[j,1] != v[k, 1]) {
+                cfs <- (matrix(c(1, -v[k, 1], -1, v[j,1]), 2) / (v[j, 1] - v[k, 1])) %*%
+                    c(v[c(j,k), 2])
+                py <- matrix(c(data[i, 1], 1), 1) %*% cfs
+                if (data[i, 2] > py) blw[j] <- TRUE
+            } else {
+                blw[j] <- TRUE
+            }
         }
+        inGate[i] <- sum(ip & blw) %% 2
     }
-    ifelse((sum(v$i) %% 2) == 1, TRUE, FALSE)
+    return(as.logical(inGate))
 }

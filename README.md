@@ -1,7 +1,7 @@
 Select points by drawing a freehand gate
 ================
 Wajid Jawaid
-2016-11-18
+2016-12-10
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
@@ -22,7 +22,7 @@ install_github("wjawaid/gatepoints")
 CRAN
 ----
 
-Once available on CRAN, the package can be downloaded using
+The package can be downloaded from CRAN using:
 
 ``` {.r}
 install.packages("gatepoints")
@@ -31,10 +31,11 @@ install.packages("gatepoints")
 Usage example
 =============
 
-**gatepoints** provides an easy to use function, **fhs** (freehand select) for gating or selecting points freehand on a plot. Take the simple plot below:
+**gatepoints** provides an easy to use function, **fhs** (freehand select) for gating or selecting points freehand on a plot. If using from RStudio please use X11 display for a better user experience. Take the simple plot below:
 
 ``` {.r}
 x <- data.frame(x=1:10, y=1:10, row.names = 1:10)
+## If you are using RStudio do X11() first.
 plot(x, pch = 16, col = "red")
 ```
 
