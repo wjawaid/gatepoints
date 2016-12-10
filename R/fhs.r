@@ -36,9 +36,9 @@ fhs <- function(data, mark = TRUE, ...) {
     inROI <- applyGate(data[xPass & yPass,,drop=FALSE], sel)
     if (mark) points(data[xPass & yPass,,drop=FALSE][inROI,1:2,drop=FALSE], ...)
     attr(inROI, "gate") <- sel
-    cp <- rep("FALSE", nrow(data))
+    cp <- rep(FALSE, nrow(data))
     cp[xPass & yPass][inROI] <- TRUE
-    return(inROI)
+    return(rownames(data)[cp])
 }
 
 selectGate <- function() {
