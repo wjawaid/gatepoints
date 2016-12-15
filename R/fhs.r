@@ -12,8 +12,12 @@
 ##' @param data Data frame or matrix of co-ordinates. (x,y) co-ordinates for each
 ##' point will be on rows. Rownames of selected points will be returned.
 ##' @param mark Default TRUE. Predicate marking of selected points.
+##' @param names Default TRUE. If TRUE will return rownames of data frame with
+##' points within polygon. If FALSE will return logical vector.
 ##' @param ... Additional parameters passed to \code{\link{points}}.
-##' @return Retunns character vector of rownames of the selected points from \code{data}.
+##' @return Returns character vector of rownames of the selected points from \code{data} if
+##' names parameter is TRUE. If names is FALSE then a logical vector indicating whether points
+##' are in the polygon is returned.
 ##' @author Wajid Jawaid
 ##' @export
 ##' @examples
@@ -24,7 +28,7 @@
 ##' fhs(x)
 ##' }
 ##' @importFrom graphics locator lines points
-fhs <- function(data, mark = TRUE, ...) {
+fhs <- function(data, mark = TRUE, names = TRUE, ...) {
     cat("Mark region on plot.\n")
     if (!(is.data.frame(data) || is.matrix(data))) stop("data must be a data frame or matrix")
     if (is.null(rownames(data))) rownames(data) <- 1:nrow(data)
@@ -35,10 +39,12 @@ fhs <- function(data, mark = TRUE, ...) {
     yPass <- (data[,2] > yr[1]) & (data[,2] < yr[2])
     inROI <- applyGate(data[xPass & yPass,,drop=FALSE], sel)
     if (mark) points(data[xPass & yPass,,drop=FALSE][inROI,1:2,drop=FALSE], ...)
-    attr(inROI, "gate") <- sel
     cp <- rep(FALSE, nrow(data))
     cp[xPass & yPass][inROI] <- TRUE
-    return(rownames(data)[cp])
+    cNames <- rownames(data)[cp]
+    attr(cNames, "gate") <- attr(cp, "gate") <- sel
+    if (names) return(cNames)
+    return(cp)
 }
 
 selectGate <- function() {

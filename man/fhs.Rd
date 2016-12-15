@@ -4,7 +4,7 @@
 \alias{fhs}
 \title{Freehand select}
 \usage{
-fhs(data, mark = TRUE, ...)
+fhs(data, mark = TRUE, names = TRUE, ...)
 }
 \arguments{
 \item{data}{Data frame or matrix of co-ordinates. (x,y) co-ordinates for each
@@ -12,10 +12,15 @@ point will be on rows. Rownames of selected points will be returned.}
 
 \item{mark}{Default TRUE. Predicate marking of selected points.}
 
+\item{names}{Default TRUE. If TRUE will return rownames of data frame with
+points within polygon. If FALSE will return logical vector.}
+
 \item{...}{Additional parameters passed to \code{\link{points}}.}
 }
 \value{
-Retunns character vector of rownames of the selected points from \code{data}.
+Returns character vector of rownames of the selected points from \code{data} if
+names parameter is TRUE. If names is FALSE then a logical vector indicating whether points
+are in the polygon is returned.
 }
 \description{
 Freehand select
