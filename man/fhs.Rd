@@ -42,4 +42,3 @@ fhs(x)
 \author{
 Wajid Jawaid
 }
-
