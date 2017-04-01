@@ -15,6 +15,9 @@ knitr::opts_chunk$set(
   fig.path = "./tools/README-"
 )
 ```
+
+[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/gatepoints)](https://cran.r-project.org/package=gatepoints)
+
 # Installation
 
 **gatepoints** can be installed from Github or through CRAN.
