@@ -1,10 +1,17 @@
 Select points by drawing a freehand gate
 ================
 Wajid Jawaid
-2017-04-01
+2017-06-10
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
+
+
+
 [![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/gatepoints)](https://cran.r-project.org/package=gatepoints)
+
+[![Rdoc](http://www.rdocumentation.org/badges/version/gatepoints)](http://www.rdocumentation.org/packages/gatepoints)
+
+[![Project Status: Active - The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
 
 Installation
 ============
@@ -14,7 +21,7 @@ Installation
 Github
 ------
 
-``` r
+``` {.r}
 library(devtools)
 install_github("wjawaid/gatepoints")
 ```
@@ -24,7 +31,7 @@ CRAN
 
 The package can be downloaded from CRAN using:
 
-``` r
+``` {.r}
 install.packages("gatepoints")
 ```
 
@@ -33,7 +40,7 @@ Usage example
 
 **gatepoints** provides an easy to use function, **fhs** (freehand select) for gating or selecting points freehand on a plot. If using from RStudio please use X11 display for a better user experience. Take the simple plot below:
 
-``` r
+``` {.r}
 x <- data.frame(x=1:10, y=1:10, row.names = 1:10)
 ## If you are using RStudio do X11() first.
 plot(x, pch = 16, col = "red")
@@ -41,7 +48,7 @@ plot(x, pch = 16, col = "red")
 
 ![Simple plot.](./tools/README-simpleplot-1.png)
 
-``` r
+``` {.r}
 library(gatepoints)
 selectedPoints <- fhs(x, mark = TRUE)
 ```
@@ -55,7 +62,7 @@ To select an arbitrarily complex region run the above commands and proceed as fo
 
 The points can be marked as defined by the user with additional parameters passed to the **points** function. The names of the points as given by the rownames of the data frame **x** will be returned in **selectedPoints**. Additionally the points selected for the gate will be returned as the **gate** attribute.
 
-``` r
+``` {.r}
 selectedPoints
 #> [1] "4" "5" "7"
 #> attr(,"gate")
