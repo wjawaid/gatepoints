@@ -1,17 +1,13 @@
 Select points by drawing a freehand gate
 ================
 Wajid Jawaid
-2017-06-10
+2017-09-11
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 
 
-[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/gatepoints)](https://cran.r-project.org/package=gatepoints)
-
-[![Rdoc](http://www.rdocumentation.org/badges/version/gatepoints)](http://www.rdocumentation.org/packages/gatepoints)
-
-[![Project Status: Active - The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active)
+[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/gatepoints)](https://cran.r-project.org/package=gatepoints) [![Rdoc](http://www.rdocumentation.org/badges/version/gatepoints)](http://www.rdocumentation.org/packages/gatepoints) [![Project Status: Active - The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active) [![CRAN mirror downloads](http://cranlogs.r-pkg.org/badges/gatepoints)](https://cran.r-project.org/package=gatepoints/)
 
 Installation
 ============
