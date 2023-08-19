@@ -1,7 +1,7 @@
----
+p---
 title: "Select points by drawing a freehand gate"
 author: "Wajid Jawaid"
-email: "wj241@cam.ac.uk"
+email: "wj241@alumni.cam.ac.uk"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
@@ -12,7 +12,7 @@ vignette: >
 
 **gatepoints** provides an easy to use function, **fhs** (freehand select) for gating or selecting points freehand on a plot. If using from RStudio please use X11 display for a better user experience. Take the simple plot below:  
 
-```{r simpleplot, fig.show = 'hold', fig.cap = 'Simple plot.', fig.width = 6, fig.height = 6, dev = "svg"}
+```{r simpleplot, fig.show = 'hold', fig.cap = 'Simple plot.', fig.width = 6, fig.height = 6, dpi = 100}
 x <- data.frame(x=1:10, y=1:10, row.names = 1:10)
 ## If you are using RStudio do X11() first.
 plot(x, pch = 16, col = "red")
@@ -32,7 +32,7 @@ To select an arbitrarily complex region run the above commands and proceed as fo
 selectedPoints <- c("4", "5", "7")
 ```
 
-```{r gatedplot, echo=FALSE, eval = TRUE, fig.show = 'hold', fig.cap = 'Selected points', fig.width = 6, fig.height = 6, dev = "svg"}
+```{r gatedplot, echo=FALSE, eval = TRUE, fig.show = 'hold', fig.cap = 'Selected points', fig.width = 6, fig.height = 6, dpi = 100}
 plot(x, pch = 16, col = "red")
 x <- rbind(c(6.099191, 8.274120), 
            c(8.129107, 7.048649),

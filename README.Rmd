@@ -1,7 +1,7 @@
 ---
 title: "Select points by drawing a freehand gate"
 author: "Wajid Jawaid"
-email: "wj241@cam.ac.uk"
+email: "wj241@alumni.cam.ac.uk"
 date: "`r Sys.Date()`"
 output: github_document
 ---
@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-[![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/gatepoints)](https://cran.r-project.org/package=gatepoints) [![Rdoc](http://www.rdocumentation.org/badges/version/gatepoints)](http://www.rdocumentation.org/packages/gatepoints) [![Project Status: Active - The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active) [![CRAN mirror downloads](http://cranlogs.r-pkg.org/badges/gatepoints)](https://cran.r-project.org/package=gatepoints/)
+[![CRAN_Status_Badge](https://www.r-pkg.org/badges/version/gatepoints)](https://cran.r-project.org/package=gatepoints) [![Rdoc](https://www.rdocumentation.org/badges/version/gatepoints)](https://www.rdocumentation.org/packages/gatepoints) [![Project Status: Active - The project has reached a stable, usable state and is being actively developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active) [![CRAN mirror downloads](https://cranlogs.r-pkg.org/badges/gatepoints)](https://cran.r-project.org/package=gatepoints/)
 
 # Installation
 

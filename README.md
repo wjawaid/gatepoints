@@ -1,74 +1,74 @@
 Select points by drawing a freehand gate
 ================
 Wajid Jawaid
-2017-09-11
+2021-02-03
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
+[![CRAN\_Status\_Badge](https://www.r-pkg.org/badges/version/gatepoints)](https://cran.r-project.org/package=gatepoints)
+[![Rdoc](https://www.rdocumentation.org/badges/version/gatepoints)](https://www.rdocumentation.org/packages/gatepoints)
+[![Project Status: Active - The project has reached a stable, usable
+state and is being actively
+developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+[![CRAN mirror
+downloads](https://cranlogs.r-pkg.org/badges/gatepoints)](https://cran.r-project.org/package=gatepoints/)
 
-
-[![CRAN\_Status\_Badge](http://www.r-pkg.org/badges/version/gatepoints)](https://cran.r-project.org/package=gatepoints) [![Rdoc](http://www.rdocumentation.org/badges/version/gatepoints)](http://www.rdocumentation.org/packages/gatepoints) [![Project Status: Active - The project has reached a stable, usable state and is being actively developed.](http://www.repostatus.org/badges/latest/active.svg)](http://www.repostatus.org/#active) [![CRAN mirror downloads](http://cranlogs.r-pkg.org/badges/gatepoints)](https://cran.r-project.org/package=gatepoints/)
-
-Installation
-============
+# Installation
 
 **gatepoints** can be installed from Github or through CRAN.
 
-Github
-------
+## Github
 
-``` {.r}
-library(devtools)
-install_github("wjawaid/gatepoints")
-```
+    library(devtools)
+    install_github("wjawaid/gatepoints")
 
-CRAN
-----
+## CRAN
 
 The package can be downloaded from CRAN using:
 
-``` {.r}
-install.packages("gatepoints")
-```
+    install.packages("gatepoints")
 
-Usage example
-=============
+# Usage example
 
-**gatepoints** provides an easy to use function, **fhs** (freehand select) for gating or selecting points freehand on a plot. If using from RStudio please use X11 display for a better user experience. Take the simple plot below:
+**gatepoints** provides an easy to use function, **fhs** (freehand
+select) for gating or selecting points freehand on a plot. If using from
+RStudio please use X11 display for a better user experience. Take the
+simple plot below:
 
-``` {.r}
-x <- data.frame(x=1:10, y=1:10, row.names = 1:10)
-## If you are using RStudio do X11() first.
-plot(x, pch = 16, col = "red")
-```
+    x <- data.frame(x=1:10, y=1:10, row.names = 1:10)
+    ## If you are using RStudio do X11() first.
+    plot(x, pch = 16, col = "red")
 
 ![Simple plot.](./tools/README-simpleplot-1.png)
 
-``` {.r}
-library(gatepoints)
-selectedPoints <- fhs(x, mark = TRUE)
-```
+    library(gatepoints)
+    selectedPoints <- fhs(x, mark = TRUE)
 
-To select an arbitrarily complex region run the above commands and proceed as follows:
+To select an arbitrarily complex region run the above commands and
+proceed as follows:
 
-1.  Mark region of your choice by **left clicking** around your region of interest.
-2.  Close polygon by **right clicking**. On the Windows platform click **stop** after right clicking.
+1.  Mark region of your choice by **left clicking** around your region
+    of interest.
+2.  Close polygon by **right clicking**. On the Windows platform click
+    **stop** after right clicking.
 
 ![Selected points](./tools/README-gatedplot-1.png)
 
-The points can be marked as defined by the user with additional parameters passed to the **points** function. The names of the points as given by the rownames of the data frame **x** will be returned in **selectedPoints**. Additionally the points selected for the gate will be returned as the **gate** attribute.
+The points can be marked as defined by the user with additional
+parameters passed to the **points** function. The names of the points as
+given by the rownames of the data frame **x** will be returned in
+**selectedPoints**. Additionally the points selected for the gate will
+be returned as the **gate** attribute.
 
-``` {.r}
-selectedPoints
-#> [1] "4" "5" "7"
-#> attr(,"gate")
-#>          x        y
-#> 1 6.099191 8.274120
-#> 2 8.129107 7.048649
-#> 3 8.526881 5.859404
-#> 4 5.700760 6.716428
-#> 5 5.605314 5.953430
-#> 6 6.866882 3.764390
-#> 7 3.313575 3.344069
-#> 8 2.417270 5.217868
-```
+    selectedPoints
+    #> [1] "4" "5" "7"
+    #> attr(,"gate")
+    #>          x        y
+    #> 1 6.099191 8.274120
+    #> 2 8.129107 7.048649
+    #> 3 8.526881 5.859404
+    #> 4 5.700760 6.716428
+    #> 5 5.605314 5.953430
+    #> 6 6.866882 3.764390
+    #> 7 3.313575 3.344069
+    #> 8 2.417270 5.217868
